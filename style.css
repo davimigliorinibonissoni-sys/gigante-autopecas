@@ -659,3 +659,184 @@ img {
     padding: 28px 20px;
   }
 }
+/* ===========================
+   BOTÃO WHATSAPP FLUTUANTE
+   =========================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+}
+
+.whatsapp-float img {
+  width: 34px;
+  height: 34px;
+  filter: brightness(0) invert(1);
+}
+/* ===========================
+   MAPA
+   =========================== */
+.mapa {
+  padding: 100px 0 0;
+  background: var(--cinza-bg);
+}
+
+.mapa-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  margin-top: 40px;
+}
+/* ===========================
+   AVALIAÇÕES
+   =========================== */
+.avaliacoes {
+  padding: 100px 0;
+  background: var(--branco);
+}
+
+.avaliacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.card-avaliacao {
+  background: var(--cinza-bg);
+  border-radius: var(--raio);
+  padding: 32px 28px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s;
+}
+
+.card-avaliacao:hover {
+  transform: translateY(-4px);
+}
+
+.card-avaliacao.destaque {
+  background: var(--azul);
+}
+
+.card-avaliacao.destaque p,
+.card-avaliacao.destaque strong {
+  color: var(--branco);
+}
+
+.card-avaliacao.destaque span {
+  color: rgba(255,255,255,0.6);
+}
+
+.estrelas {
+  color: #f1c40f;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.card-avaliacao p {
+  color: var(--cinza-medio);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.avaliador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.avaliador-inicial {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--vermelho);
+  color: var(--branco);
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avaliador strong {
+  display: block;
+  color: var(--azul);
+  font-size: 0.95rem;
+}
+
+.avaliador span {
+  color: var(--cinza-medio);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .avaliacoes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===========================
+   ANIMAÇÕES AO ROLAR
+   =========================== */
+.animar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animar.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ===========================
+   BOTÃO VOLTAR AO TOPO
+   =========================== */
+.voltar-topo {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  background: var(--azul);
+  color: var(--branco);
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 998;
+}
+
+.voltar-topo.visivel {
+  opacity: 1;
+  visibility: visible;
+}
+
+.voltar-topo:hover {
+  background: var(--vermelho);
+  transform: translateY(-3px);
+}

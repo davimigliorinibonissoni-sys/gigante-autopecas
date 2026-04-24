@@ -56,3 +56,79 @@ window.addEventListener('scroll', function () {
     navbar.style.boxShadow = '0 2px 16px rgba(0,0,0,0.3)';
   }
 });
+// ----------------------------------------
+// 4. ANIMAÇÕES AO ROLAR A PÁGINA
+// ----------------------------------------
+const elementos = document.querySelectorAll('.animar');
+
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry, index) {
+    if (entry.isIntersecting) {
+      // Atraso progressivo para cada elemento
+      setTimeout(function () {
+        entry.target.classList.add('visivel');
+      }, index * 100);
+    }
+  });
+}, { threshold: 0.15 });
+
+elementos.forEach(function (el) {
+  observer.observe(el);
+});
+// ----------------------------------------
+// 5. CONTADOR ANIMADO
+// ----------------------------------------
+const contadores = document.querySelectorAll('.stat-num');
+
+const contadorObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const alvo = parseInt(el.getAttribute('data-target'));
+      const duracao = 2000; // duração em milissegundos
+      const incremento = alvo / (duracao / 16);
+      let atual = 0;
+
+      const timer = setInterval(function () {
+        atual += incremento;
+        if (atual >= alvo) {
+          atual = alvo;
+          clearInterval(timer);
+
+          // Adiciona o símbolo certo após terminar
+          if (alvo === 100) {
+            el.textContent = '100%';
+          } else if (alvo === 5000) {
+            el.textContent = '5k+';
+          } else {
+            el.textContent = alvo + '+';
+          }
+        } else {
+          el.textContent = Math.floor(atual);
+        }
+      }, 16);
+
+      contadorObserver.unobserve(el); // roda só uma vez
+    }
+  });
+}, { threshold: 0.5 });
+
+contadores.forEach(function (el) {
+  contadorObserver.observe(el);
+});
+// ----------------------------------------
+// 6. BOTÃO VOLTAR AO TOPO
+// ----------------------------------------
+const voltarTopo = document.getElementById('voltarTopo');
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 400) {
+    voltarTopo.classList.add('visivel');
+  } else {
+    voltarTopo.classList.remove('visivel');
+  }
+});
+
+voltarTopo.addEventListener('click', function () {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
